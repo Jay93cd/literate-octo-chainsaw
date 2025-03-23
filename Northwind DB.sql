@@ -87,13 +87,13 @@ order by total_sales desc
 ----------------------------------------------------------------------------------------
 --- Order and Sales Price after Discount
 select order_id,unit_price,quantity,(unit_price*quantity) as total_price,
-	   (unit_price*quantity)*(1-discount/100) as sales_price
+	   (unit_price*quantity)*(1-discount) as sales_price
 from order_details	 
 
 ----------------------------------------------------------------------------------------
 --- Category, Products Sold and Total Sales per Products
 select p.product_name product, c.category_name category,
-	   (od.unit_price*od.quantity)*(1-od.discount/100) as total_sales
+	   (od.unit_price*od.quantity)*(1-od.discount) as total_sales
 from products p
 join categories c using (category_id)
 join order_details od using (product_id)
